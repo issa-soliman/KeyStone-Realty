@@ -4,30 +4,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuIcon = document.getElementById("menu-icon");
   const closeIcon = document.getElementById("close-icon");
 
-  // 1. فتح وإغلاق السايدبار
+  // 1. إعداد وتبديل القائمة الجانبية (Sidebar Toggle)
+  if (closeIcon) closeIcon.style.display = "none";
+
+  function toggleMenu(forceState) {
+    if (!sidebar) return;
+
+    // تحديد حالة الفتح أو تبديلها
+    const isOpen = forceState !== undefined ? forceState : !sidebar.classList.contains("show");
+
+    sidebar.classList.toggle("show", isOpen);
+    sidebar.classList.toggle("active", isOpen);
+
+    if (menuIcon && closeIcon) {
+      menuIcon.style.display = isOpen ? "none" : "block";
+      closeIcon.style.display = isOpen ? "block" : "none";
+    }
+  }
+
   if (openBtn && sidebar) {
+    // فتح/إغلاق عند الضغط على الزر
     openBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      const isOpen = sidebar.classList.toggle("active");
-      sidebar.classList.toggle("show");
-
-      if (menuIcon && closeIcon) {
-        menuIcon.style.display = isOpen ? "none" : "block";
-        closeIcon.style.display = isOpen ? "block" : "none";
-      }
+      toggleMenu();
     });
 
-    // إغلاق عند الضغط خارجاً
+    // إغلاق عند الضغط خارج القائمة
     document.addEventListener("click", (e) => {
-      if (!sidebar.contains(e.target) && !openBtn.contains(e.target)) {
-        sidebar.classList.remove("active", "show");
-        if (menuIcon) menuIcon.style.display = "block";
-        if (closeIcon) closeIcon.style.display = "none";
+      if (
+        sidebar.classList.contains("show") &&
+        !sidebar.contains(e.target) &&
+        !openBtn.contains(e.target)
+      ) {
+        toggleMenu(false);
       }
     });
   }
 
-  // 2. التمرير والإضاءة عند الضغط والتصفح
+  // 2. التمرير السلس والتحديث الفوري للرابط النشط (Smooth Scroll)
   const navLinks = document.querySelectorAll('a.links[href^="#"]');
 
   navLinks.forEach((link) => {
@@ -39,25 +53,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (targetSection) {
         e.preventDefault();
-        
-        // التمرير للسكشن
+
+        // التمرير إلى القسم المطلوب
         targetSection.scrollIntoView({ behavior: "smooth" });
 
         // تفعيل الرابط المضروب فوراً
         navLinks.forEach((l) => l.classList.remove("active"));
         link.classList.add("active");
 
-        // إغلاق السايدبار بعد الضغط
-        if (sidebar) {
-          sidebar.classList.remove("active", "show");
-          if (menuIcon) menuIcon.style.display = "block";
-          if (closeIcon) closeIcon.style.display = "none";
-        }
+        // إغلاق السايدبار بعد الضغط على الرابط
+        toggleMenu(false);
       }
     });
   });
 
-  // 3. التحديث التلقائي أثناء السكرول بالماوس
+  // 3. التحديث التلقائي للرابط النشط أثناء التصفح بالماوس (ScrollSpy)
   window.addEventListener("scroll", () => {
     let currentSectionId = "";
 
@@ -66,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (targetId && targetId !== "#") {
         const section = document.querySelector(targetId);
         if (section) {
-          const sectionTop = section.offsetTop - 150; // offset لضبط بداية الرؤية
+          const sectionTop = section.offsetTop - 150; // offset لضبط بداية رؤية السكشن
           if (window.scrollY >= sectionTop) {
             currentSectionId = targetId;
           }
