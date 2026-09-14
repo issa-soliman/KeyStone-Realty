@@ -1019,6 +1019,7 @@ font-size: 20px;
 #contact-section{
 background-color: white;
 padding: 80px 0;
+overflow-x: hidden; 
   .cards-container{
     grid-template-columns: 1fr;
     gap: 24px;
@@ -1058,6 +1059,7 @@ a{
   font-size: 16px;
         text-decoration: none;
         font-weight: 600;
+        word-break: break-all;
 
 }
 &.c-v{
@@ -1147,6 +1149,7 @@ height: 48px;
 background-color: white;
 border-radius: 12px;
 margin-right: 16px;
+flex-shrink: 0;
 svg{
   width: 16px;
   height: 18px;
@@ -1194,7 +1197,7 @@ color: oklch(0.446 0.03 256.802);
       font-size: 14px;
     }
     .links{
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
 gap: 12px;
 a{
   width: 48px;
@@ -1224,6 +1227,8 @@ a{
   background-color: white;
   border: 2px solid oklch(0.967 0.003 264.542);
 border-radius: 16px;
+max-width: 100%;
+
 h3{
   color: oklch(0.21 0.034 264.665);
   font-size: 30px;
