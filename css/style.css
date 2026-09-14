@@ -181,12 +181,14 @@ margin-right: .75rem;
       grid-template-columns: 1fr 1fr 1fr;
   .bg-img-card{
     cursor: pointer;
-
+isolation: isolate;
   background-size: cover;
 background-position: 50%;
   background-repeat: no-repeat;
   border-radius: .5rem;
-  height: 4rem;
+min-height: 64px; 
+    height: auto;
+      transform: translateZ(0);
   .bg-color-img{
     background-image: linear-gradient(to right, oklab(0.38 0.0761041 -0.173 / 0.6) 0%, oklab(0.381 0.100917 -0.144194 / 0.6) 100%);
     z-index: 1;
@@ -195,8 +197,7 @@ background-position: 50%;
   }
   .text-z-index{
     z-index: 1000;
-padding: 1rem;
-
+padding: 12px;
   }
 p{
   margin: 0;
