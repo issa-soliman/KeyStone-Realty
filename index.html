@@ -17,13 +17,13 @@
 </div>
 <nav class="side-bar d-flex align-items-center">
 <a class="links position-relative" href="#home">Home</a>
-<div class="accordion w-100" id="accordionExample">
-<button class="w-100 d-flex align-items-center justify-content-between position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+<div class="accordion w-100" id="navAccordion">
+<button class="w-100 d-flex align-items-center justify-content-between position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#navProperties" aria-expanded="false" aria-controls="navProperties">
   Properties
   <svg class="svg-inline--fa fa-chevron-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path></svg>
 </button>
-    <div id="collapseTwo" class="accordion-collapse collapse w-100
-     " data-bs-parent="#accordionExample">
+    <div id="navProperties" class="accordion-collapse collapse w-100
+     " data-bs-parent="#navAccordion">
       <div class="accordion-b position-absolute d-grid start-0">
 
 <div class="accordion-card">
@@ -156,17 +156,17 @@
 </button>
   </div>
   <nav id="sidebar" class="d-none w-100">
-<a class="w-100 d-block links" href="#hero-section">
+<a class="w-100 d-block links" href="#home">
   Home
 </a>
-<div class="accordion w-100" id="accordionExample">
+<div class="accordion w-100" id="sidebarAccordion">
     <h2 class="accordion-header">
-<button class="w-100 d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+<button class="w-100 d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarProperties" aria-expanded="false" aria-controls="sidebarProperties">
   Properties
   <svg class="svg-inline--fa fa-chevron-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path></svg>
 </button>
     </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+    <div id="sidebarProperties" class="accordion-collapse collapse " data-bs-parent="#sidebarAccordion">
       <div class="accordion-b overflow-y-auto">
 
 <div class="accordion-card">
@@ -305,16 +305,16 @@
             home.
           </p>
   <div class="form-container text-center w-100">
-<form>
+<form id="search-form">
   <div class="d-grid l-section">
 <div>
   <div class="w-100 d-flex align-items-center flex-column">
-  <label for="location-input" class="label-style ">Location</label>
+  <label for="search-location" class="label-style ">Location</label>
   <div class="d-flex align-items-center w-100 position-relative">
 <svg class="location-icon position-absolute" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="location-dot" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg>    
     <input 
       type="text" 
-      id="location-input" 
+      id="search-location" 
       class="input-style input-location w-100" 
       placeholder="Enter city, neighborhood, or ZIP code"
     >
@@ -322,8 +322,8 @@
 </div>
 </div>
   <div class="w-100 d-flex align-items-center flex-column">
-<label class="label-style" for="membership">Property Type</label>
-<select class="input-style w-100" name="membership" id="membership">
+<label class="label-style" for="search-type">Property Type</label>
+<select class="input-style w-100" name="type" id="search-type">
   <option class="option-style" >All Types</option>
   <option class="option-style" >House</option>
   <option class="option-style" >Apartment</option>
@@ -334,8 +334,8 @@
 
   </div>
   <div class="w-100 d-flex align-items-center flex-column">
-<label class="label-style" for="membership">Price Range</label>
-<select class="input-style w-100" name="membership" id="membership">
+<label class="label-style" for="search-price">Price Range</label>
+<select class="input-style w-100" name="price" id="search-price">
   <option class="option-style" >Any Price</option>
   <option class="option-style" >$0 - $500K</option>
   <option class="option-style" >$500K - $1M</option>
@@ -349,8 +349,8 @@
   </div>
   <div class="d-grid r-section">
       <div class="w-100 d-flex align-items-center flex-column">
-<label class="label-style" for="membership">Bedrooms</label>
-<select class="input-style w-100" name="membership" id="membership">
+<label class="label-style" for="search-bedrooms">Bedrooms</label>
+<select class="input-style w-100" name="bedrooms" id="search-bedrooms">
   <option class="option-style" >Any</option>
   <option class="option-style" >1+</option>
   <option class="option-style" >2+</option>
@@ -362,8 +362,8 @@
 
   </div>
   <div class="w-100 d-flex align-items-center flex-column">
-<label class="label-style" for="membership">Bathrooms</label>
-<select class="input-style w-100" name="membership" id="membership">
+<label class="label-style" for="search-bathrooms">Bathrooms</label>
+<select class="input-style w-100" name="bathrooms" id="search-bathrooms">
   <option class="option-style" >Any</option>
   <option class="option-style" >1+</option>
   <option class="option-style" >2+</option>
@@ -374,19 +374,19 @@
 
   </div>
   <div class="w-100 d-flex align-items-center flex-column">
-  <label for="location-input" class="label-style ">Min Sq Ft</label>
+  <label for="search-min-sqft" class="label-style ">Min Sq Ft</label>
     <input 
       type="text" 
-      id="location-input" 
+      id="search-min-sqft" 
       class="input-style w-100" 
       placeholder="1,000"
     >
 </div>
   <div class="w-100 d-flex align-items-center flex-column">
-  <label for="location-input" class="label-style ">Max Sq Ft</label>
+  <label for="search-max-sqft" class="label-style ">Max Sq Ft</label>
     <input 
       type="text" 
-      id="location-input" 
+      id="search-max-sqft" 
       class="input-style w-100" 
       placeholder="5,000"
     >
@@ -1230,42 +1230,45 @@ Send us a message
                     Fill out the form below and we'll get back to you as soon as
                     possible
                   </p>
-    <form>
+    <form id="contact-form">
   <div class="d-grid l-section">
   <div class="w-100 d-flex flex-column">
-  <label for="location-input" class="label-style ">First Name <span>*</span></label>
+  <label for="contact-first-name" class="label-style ">First Name <span>*</span></label>
     <input 
       type="text" 
-      id="location-input" 
+      id="contact-first-name" 
+      required 
       class="input-style w-100" 
       placeholder="John"
     >
 </div>
   <div class="w-100 d-flex flex-column">
-  <label for="location-input" class="label-style ">Last Name <span>*</span></label>
+  <label for="contact-last-name" class="label-style ">Last Name <span>*</span></label>
     <input 
       type="text" 
-      id="location-input" 
+      id="contact-last-name" 
+      required 
       class="input-style w-100" 
      placeholder="Doe"
     >
 </div>
   <div class="w-100 d-flex flex-column">
-  <label for="location-input" class="label-style ">Email Address <span>*</span></label>
+  <label for="contact-email" class="label-style ">Email Address <span>*</span></label>
     <input 
-      type="text" 
-      id="location-input" 
+      type="email" 
+      id="contact-email" 
+      required 
       class="input-style w-100" 
       placeholder="john@example.com"
     >
 </div>
   <div class="w-100 d-flex flex-column">
-  <label for="location-input" class="label-style ">
+  <label for="contact-phone" class="label-style ">
                         Phone Number
                       </label>
     <input 
-      type="text" 
-      id="location-input" 
+      type="tel" 
+      id="contact-phone" 
       class="input-style w-100" 
       placeholder="+1 (555) 000-0000"
     >
@@ -1274,10 +1277,10 @@ Send us a message
   </div>
   <div class="d-grid r-section">
   <div class="w-100 d-flex flex-column">
-<label class="label-style">
+<label class="label-style" for="contact-interest">
                       I'm interested in
                     </label>
-<select class="input-style w-100">
+<select class="input-style w-100" id="contact-interest">
   <option class="option-style" >Select a service</option>
   <option class="option-style" >Buying a home</option>
   <option class="option-style" >Selling a home</option>
@@ -1291,10 +1294,10 @@ Send us a message
 
   </div>
 <div class="w-100 d-flex flex-column">
-  <label class="label-style">
+  <label class="label-style" for="contact-message">
     Your Message <span>*</span>
   </label>
-  <textarea class="input-style w-100 t-a" rows="5" placeholder="Tell us about your real estate needs..."></textarea>
+  <textarea id="contact-message" required class="input-style w-100 t-a" rows="5" placeholder="Tell us about your real estate needs..."></textarea>
 </div>
 <div class="custom-checkbox-wrapper d-flex align-items-center">
   <input class="form-check-input custom-checkbox" type="checkbox" id="marketingAgreement">

@@ -94,4 +94,37 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  // 4. منع إعادة تحميل الصفحة عند إرسال نموذج البحث
+  const searchForm = document.getElementById("search-form");
+  const featured = document.getElementById("featured-properties");
+
+  if (searchForm) {
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (featured) featured.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  // 5. نموذج التواصل: المتصفح يتحقق من الحقول المطلوبة، وبعدها نعرض رسالة نجاح
+  const contactForm = document.getElementById("contact-form");
+
+  if (contactForm) {
+    const sendBtn = contactForm.querySelector("button");
+    const sendBtnHTML = sendBtn ? sendBtn.innerHTML : "";
+
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      contactForm.reset();
+
+      if (sendBtn) {
+        sendBtn.textContent = "Message Sent ✓";
+        sendBtn.disabled = true;
+        setTimeout(() => {
+          sendBtn.innerHTML = sendBtnHTML;
+          sendBtn.disabled = false;
+        }, 3000);
+      }
+    });
+  }
 });
