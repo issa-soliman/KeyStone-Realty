@@ -905,6 +905,12 @@ display: none;
     &.carousel-item-prev {
       visibility: visible;
     }
+    /* jump (no animation) to the start position, so the incoming card can then slide in */
+    &:not(.active):not(.carousel-item-next):not(.carousel-item-prev),
+    &.carousel-item-next:not(.carousel-item-start),
+    &.carousel-item-prev:not(.carousel-item-end) {
+      transition: none;
+    }
 
     .testimonial-card {
       margin: 0 16px;
