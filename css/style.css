@@ -893,8 +893,18 @@ display: none;
 }
 .carousel-inner {
   border-radius: 16px;
+  /* all slides stay in the layout (just hidden), so every card gets the height of the tallest one and the section stops jumping */
+  display: flex;
   .carousel-item {
     padding: 0 16px;
+    display: block;
+    float: none;
+    visibility: hidden;
+    &.active,
+    &.carousel-item-next,
+    &.carousel-item-prev {
+      visibility: visible;
+    }
 
     .testimonial-card {
       margin: 0 16px;
@@ -902,6 +912,9 @@ display: none;
       padding: 32px;
       border-radius: 16px;
 max-width: 896px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
       .stars-header {
         gap: 12px;
         margin-bottom: 20px;
@@ -928,6 +941,7 @@ max-width: 896px;
 
       .user-profile {
         gap: 16px;
+        margin-top: auto;
 
         .avatar-img {
           width: 64px;
